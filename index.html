@@ -30,6 +30,39 @@ button:hover{background:#08294c}
 .small{font-size:14px;color:#506070;text-align:center}
 .alert{background:#fff7d6;color:#7c4a00;border:1px solid #f2d36b;padding:12px;border-radius:12px;margin-top:12px}
 @media(max-width:600px){header h1{font-size:24px} .card{padding:18px}}
+
+.video-box{
+  margin-top:18px;
+  background:#f8fbff;
+  border:1px solid #d6e2ef;
+  border-radius:16px;
+  padding:18px;
+}
+.video-box h2{
+  color:#0b3766;
+  margin-top:0;
+  text-align:center;
+}
+.video-frame{
+  position:relative;
+  width:100%;
+  max-width:950px;
+  margin:0 auto;
+  padding-top:56.25%;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  background:#000;
+}
+.video-frame iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
 </style>
 </head>
 <body oncopy="return false" onpaste="return false" oncut="return false">
@@ -52,6 +85,16 @@ button:hover{background:#08294c}
     </div>
     <button onclick="continuarEvaluacion()">Continuar con la evaluación</button>
   </div>
+
+  <section class="card video-box" id="videoCard">
+    <h2>Video de apoyo antes de la evaluación</h2>
+    <p style="text-align:center;color:#506070;margin-top:-6px;">
+      Observa el video para recordar de qué trata la recuperación antes de responder.
+    </p>
+    <div class="video-frame">
+      <iframe src="https://drive.google.com/file/d/1Tcy2STsj3uB6HKwykcZOfYyPr-E_0Sn5/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </section>
 
   <div class="card hidden" id="quizCard">
     <div id="questionContainer"></div>
@@ -98,6 +141,7 @@ function continuarEvaluacion(){
     q.answer=correctas;
   });
   document.getElementById("datosCard").classList.add("hidden");
+  document.getElementById("videoCard").classList.add("hidden");
   document.getElementById("quizCard").classList.remove("hidden");
   document.getElementById("infografiaCard").classList.remove("hidden");
   showQuestion();
